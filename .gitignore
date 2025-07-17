@@ -1,0 +1,13 @@
+# Python virtual environment
+venv/
+*.pyc
+__pycache__/
+
+# IDE files (optional, but good practice)
+.vscode/
+
+# Data (important for Kaggle datasets)
+data/
+
+# macOS system files
+.DS_Store
