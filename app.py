@@ -48,7 +48,20 @@ if comparison_button:
 
                 st.markdown("---") 
 
-                target_stats_for_comparison = target_player_season_df[comparison_features].values
+                target_stats_for_comparison = target_player_season_df[comparison_features].values 
+
+                target_mask = (df['player'].str.lower() == normalized_player_input) & \
+                              (df['season'] == normalized_season_input)
+
+                comparison_pool_df = df[~target_mask].copy() 
+
+                comparison_pool_df[comparison_features] = comparison_pool_df[comparison_features].fillna(0)
+
+                st.write("Comparison Pool Preview (first 5 rows after cleaning NaNs):")
+                st.dataframe(comparison_pool_df[comparison_features].head())
+
+                st.info("Now, standardizing data and calculating similarities...")
+
 
                 st.write("Target player's stats (for comparison):")
                 st.dataframe(pd.DataFrame(target_stats_for_comparison, columns=comparison_features))
