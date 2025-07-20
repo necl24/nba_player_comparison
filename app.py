@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics.pairwise import euclidean_distances
 
 data_path = "/Users/neilaeron/Documents/NBA_Comparison/data/Player Per Game.csv"
 
@@ -12,13 +14,20 @@ def load_nba_data(path):
 
 df = load_nba_data(data_path)
 
-st.dataframe(df)
+st.dataframe(df.head())
+
 st.title('NBA COMPARISON APP')
 
 player_name_input = st.text_input("Enter NBA Player Name", "Russell Westbrook")
 season_input = st.text_input("Season", "2017")
 
 comparison_button = st.button("Find Comparable Players")
+
+# --- Define the features to use for comparison (8 core stats) ---
+comparison_features = [
+    'pts_per_game', 'trb_per_game', 'ast_per_game', 'stl_per_game', 'blk_per_game',
+    'fg_percent', 'x3p_percent', 'ft_percent'
+]
 
 if comparison_button:
     if player_name_input and season_input:
@@ -37,9 +46,18 @@ if comparison_button:
                 st.success(f"Found stats for {player_name_input} in {season_input}:")
                 st.dataframe(target_player_season_df.head(1))
 
+                st.markdown("---") 
+
+                target_stats_for_comparison = target_player_season_df[comparison_features].values
+
+                st.write("Target player's stats (for comparison):")
+                st.dataframe(pd.DataFrame(target_stats_for_comparison, columns=comparison_features))
+
+                st.info("Now, preparing comparison pool and calculating similarities...")
+
         except ValueError:
             st.error("Please enter a valid year for the Season (e.g., 2017).")
         except KeyError as e:
-            st.error(f"A column expected for filtering was not found. Please check column names in your CSV. Error: {e}")
+            st.error(f"A column expected for filtering or comparison was not found. Please check column names in your CSV. Error: {e}")
     else:
         st.warning("Please enter both a player name and a season to find comparisons.")
