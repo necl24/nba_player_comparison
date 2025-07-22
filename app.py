@@ -63,6 +63,16 @@ if comparison_button:
                 st.dataframe(comparison_pool_df[display_cols_for_preview].head())
 
                 st.info("Now, standardizing data and calculating similarities...")
+            
+               scaler = StandardScaler()
+                scaled_comparison_pool_stats = scaler.fit_transform(comparison_pool_df[comparison_features])
+
+                scaled_target_stats = scaler.transform(target_stats_for_comparison)
+
+                st.success("Data standardized successfully!") 
+
+
+
 
         except ValueError:
             st.error("Please enter a valid year for the Season (e.g., 2017).")
