@@ -24,11 +24,11 @@ This interactive web application, built with Streamlit, allows users to find sta
 ## Visuals
 Here's a quick look at some of the key technologies powering this project:
 
-![Python Logo](https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg) 
-![Streamlit Logo](https://streamlit.io/images/brand/streamlit-logo-light.svg)
-![Pandas Logo](https://pandas.pydata.org/static/img/pandas.svg)
-![Scikit-learn Logo](https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg)
-![GitHub Logo](https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg)
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo" width="75"> 
+<img src="https://streamlit.io/images/brand/streamlit-logo-light.svg" alt="Streamlit Logo" width="75">
+<img src="https://pandas.pydata.org/static/img/pandas.svg" alt="Pandas Logo" width="75">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="Scikit-learn Logo" width="75">
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub Logo" width="75">
 
 ## How to Run Locally
 
@@ -64,6 +64,11 @@ To set up and run this application on your local machine, follow these steps:
     streamlit run app.py
     ```
     The application will open in your default web browser.
+
+## Live Demo
+*(Once deployed, replace this line with your actual Streamlit Cloud URL)*
+[Link to Live Application](YOUR_STREAMLIT_CLOUD_URL_HERE)
+
 
 ## Live Demo
 *(Once deployed, replace this line with your actual Streamlit Cloud URL)*
