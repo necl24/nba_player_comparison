@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics.pairwise import euclidean_distances
 
-data_path = data/Player Per Game.csv
+data_path = data_path = "data/Player Per Game.csv"
 
 @st.cache_data
 def load_nba_data(path):
