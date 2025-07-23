@@ -64,13 +64,22 @@ if comparison_button:
 
                 st.info("Now, standardizing data and calculating similarities...")
             
-               scaler = StandardScaler()
+                scaler = StandardScaler()
                 scaled_comparison_pool_stats = scaler.fit_transform(comparison_pool_df[comparison_features])
 
                 scaled_target_stats = scaler.transform(target_stats_for_comparison)
 
                 st.success("Data standardized successfully!") 
 
+                distances = euclidean_distances(scaled_target_stats, scaled_comparison_pool_stats)
+
+                # Add the new column using direct assignment
+                comparison_pool_df['Distance'] = distances[0]
+                sorted_comparisons =  comparison_pool_df.sort_values(by='Distance',ascending=True)
+                top_comparable_players =  sorted_comparisons.head(5)
+                st.write("Top 5 Comparable Players ") 
+
+                st.dataframe(top_comparable_players)
 
 
 
