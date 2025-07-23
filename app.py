@@ -14,7 +14,7 @@ def load_nba_data(path):
 
 df = load_nba_data(data_path)
 
-st.dataframe(df.head())
+st.dataframe(df)
 
 st.title('NBA COMPARISON APP')
 
@@ -59,8 +59,7 @@ if comparison_button:
                 comparison_pool_df[comparison_features] = comparison_pool_df[comparison_features].fillna(0)
 
                 display_cols_for_preview = ['player', 'season', 'team'] + comparison_features
-                st.write("Comparison Pool Preview (first 5 rows after cleaning NaNs):")
-                st.dataframe(comparison_pool_df[display_cols_for_preview].head())
+            
 
                 st.info("Now, standardizing data and calculating similarities...")
             
